@@ -29,6 +29,31 @@ const newNumbers= numbers.map(function(number){
   return number * 2
 })
 
+const List = () =>
+  list.map(function (item){
+    return(
+      <div key={item.objectId}>
+        <span>
+          <a href={item.url} target="_blank" rel="noreferrer">{item.title}</a>
+        </span>
+        <br/>
+        <span>
+          Empresa: {item.autor}
+        </span>
+          <br/>
+        <span>
+          {item.num_coments}
+        </span>
+      </div>
+    )
+  })
+
+const Search = () => 
+    <div>
+      <label htmlFor="search"> Search: </label>
+      <input id="search" type="text"></input>
+    </div>
+
 function App() {
   const titulo = "M4rtt";
   return (
@@ -37,22 +62,9 @@ function App() {
       <h1>{welcome.greeting} <b>{welcome.name}</b></h1>
       
       
-      <label htmlFor="search"> Search </label>
-      <input id="search" type="text"></input>
+      <Search/>
 
-      {list.map(function(item){
-        return (
-        <div id={item.objectId}>
-          <h1>
-          {item.title}
-          </h1>
-          <span>
-            <a target="_blank" href={item.url} rel="noreferrer">Site</a>
-          </span><br/>
-          <span>{item.autor}</span> <br/>
-          <span>{item.num_coments}</span>
-        </div>
-        );})}
+      <List/>
     </div>
   );
 }
